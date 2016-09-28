@@ -1,0 +1,71 @@
+.eatgram-photo {
+	max-width: 320px;
+	margin: 0 auto 10px;
+	border: thin solid #ddd;
+	border-radius: 3px;
+	animation: fadeIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+.eatgram-photo > a {
+	display: block;
+	height: 0;
+	padding-bottom: 100%;
+	background: #242322;
+}
+
+.eatgram-photo > a img {
+	animation: fadeIn 0.5s cubic-bezier(0.19, 1, 0.22, 1) both 0.2s;
+}
+
+.eatgram-photo .image {
+	width: 100%;
+	height: auto;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+}
+
+.eatgram-photo .user-profile {
+	padding: 0 10px;
+}
+
+.eatgram-photo .user-profile p {
+	margin: 0;
+}
+
+.eatgram-photo .user-profile .media-body {
+	width: auto;
+}
+
+.photo-meta {
+	color: #aaa;
+	font-size: 10px;
+}
+
+.eatgram-photo .comments {
+	padding-top: 12px;
+	border-top: thin solid #ddd;
+	background: #f7f7f7;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.eatgram-photo .comment {
+	font-size: 12px;
+	border-bottom: thin solid #ddd;
+	padding: 0 10px;
+}
+
+.eatgram-photo .comment h6 {
+	margin-bottom: 0;
+}
+
+.eatgram-photo .comment:last-child {
+	border-bottom: none;
+}
+
+.eatgram-photo .comment img {
+	border-radius: 50%;
+}

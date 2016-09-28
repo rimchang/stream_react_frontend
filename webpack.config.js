@@ -24,3 +24,5 @@ module.exports = {
     contentBase: './'
   }
 };
+
+//use webpack-dev-server --host $IP --port $PORT or webpack-dev-server --host $IP --port $PORT --hot
