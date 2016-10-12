@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { fetchUploads } from '../actions/index';
 import EatGram from './photo/eatgram';
 
 class UploadsList extends Component {
     renderEatgrams () {
-        return this.props.upload_lists.map((upload) => {
-            return (<EatGram key={upload.id} {...upload} />);
-        });
+        
+        const upload_items = this.props.upload_lists;
+        
+        return _.map(upload_items,(upload,key) => {
+            console.log('im render eatgram upload',upload);
+            return (<li key={key}><EatGram {...upload} /></li>);
+        }
+            );
+
     }
     componentWillMount () {
         this.props.fetchUploads();
     }
     
     render () {
+        
         return (
             <div>
                 hi i'm uploadslist
+                <ul className='list-inline'>
                 {this.renderEatgrams()}
+                </ul>
             </div>
             );
     }

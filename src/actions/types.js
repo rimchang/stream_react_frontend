@@ -1,1 +1,2 @@
 export const FETCH_UPLOADS='FETCH_UPLOADS';
+export const AUTH_LOGIN = 'AUTH_LOGIN';

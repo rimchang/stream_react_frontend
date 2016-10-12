@@ -1,14 +1,16 @@
+import _ from 'lodash';
 import { FETCH_UPLOADS } from '../actions/types'; 
 
-export default function (state = [],action) {
-    console.log(action.payload);
-    console.log(action.type);
+export default function (state = {},action) {
+    
+    console.log('im action.paylod.data',action.payload);
+    
     switch (action.type) {
         case FETCH_UPLOADS:
             // code
-            console.log('im in fetch upload case');
-            console.log(action.payload.data);
-            return action.payload.data;
+            const newPosts = _.mapKeys(action.payload.data ,'id');
+            console.log('im reducer new post',newPosts);
+            return { ...state, ...newPosts};
         
         default:
             // code
