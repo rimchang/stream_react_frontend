@@ -2,10 +2,28 @@ import React from 'react'
 import { authLogin } from '../actions/index'; 
 import { connect } from 'react-redux';
 import FacebookLogin from 'react-facebook-login'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl,Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl, Button, Glyphicon, Modal } from 'react-bootstrap';
+
+import NewPost from './newpost';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showModal: false };
+    
+    this.close=this.close.bind(this);
+    this.open=this.open.bind(this);
+  }
 
+  close() {
+    this.setState({ showModal: false });
+  }
+
+  open() {
+    console.log('open');
+    this.setState({ showModal: true });
+  }
+  
   render() {
     return (
         <div>
@@ -37,7 +55,7 @@ class Header extends React.Component {
           language='ko_KR'
         />
       </NavItem>
-      <NavItem eventKey={2} href="http://stream-react-backend-2-rimchang.c9users.io/auth/login/facebook/" > Login </NavItem>
+      <NavItem eventKey={2} onClick={this.open} > <Glyphicon glyph="pencil" /> </NavItem>
       <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
         <MenuItem eventKey={3.1}>Action</MenuItem>
         <MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -47,6 +65,16 @@ class Header extends React.Component {
       </NavDropdown>
     </Nav>
   </Navbar>
+  
+  <Modal show={this.state.showModal} onHide={this.close}>
+            <Modal.Header closeButton>
+              <Modal.Title>New Post</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <NewPost></NewPost>
+            </Modal.Body>
+  </Modal>
+
   </div>
     );
   }

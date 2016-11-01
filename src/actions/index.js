@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_UPLOADS, AUTH_LOGIN } from './types';
+import { FETCH_UPLOADS, AUTH_LOGIN, FETCH_TOKEN, FETCH_USER } from './types';
 
 const ROOT_URL = '//stream-react-backend-2-rimchang.c9users.io/';
 const CLIENT_ID = 'l9v9gIP17hhcKViF83WGVwcOT16Xh2llngpFdAai';
@@ -16,17 +16,25 @@ export function fetchUploads () {
 }
 
 export function authLogin (response) {
-    const request = axios.post(`${ROOT_URL}auth/convert-token/`,{
-        grant_type:"convert_token",
-        client_id : CLIENT_ID,
-        client_secret: CLIENT_SECRET,
-        backend : 'facebook',
-        token : response.accessToken
-    });
-    console.log('im res',response);
-    console.log('im req',request);
-    return ({
-        type:AUTH_LOGIN,
-        payload:null
-    });
+    return function(dispatch) {
+        axios.post(`${ROOT_URL}auth/convert-token/`,{
+            grant_type:"convert_token",
+            client_id : CLIENT_ID,
+            client_secret: CLIENT_SECRET,
+            backend : 'facebook',
+            token : response.accessToken
+        })
+        .then(response => {
+            dispatch({
+                type: FETCH_TOKEN,
+                payload: response
+            });
+        });
+        
+        dispatch({
+            type: FETCH_USER,
+            payload: response
+        });
+        
+    };
 }

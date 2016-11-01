@@ -3,13 +3,13 @@ import { FETCH_UPLOADS } from '../actions/types';
 
 export default function (state = {},action) {
     
-    console.log('im action.paylod.data',action.payload);
+    console.log('im upload list reducer action.paylod.data',action.payload);
     
     switch (action.type) {
         case FETCH_UPLOADS:
             // code
             const newPosts = _.mapKeys(action.payload.data ,'id');
-            console.log('im reducer new post',newPosts);
+            //console.log('im reducer new post',newPosts);
             return { ...state, ...newPosts};
         
         default:

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { fetchUploads } from '../actions/index';
+
 import EatGram from './photo/eatgram';
+
 
 class UploadsList extends Component {
     renderEatgrams () {
@@ -10,7 +12,7 @@ class UploadsList extends Component {
         const upload_items = this.props.upload_lists;
         
         return _.map(upload_items,(upload,key) => {
-            console.log('im render eatgram upload',upload);
+            //console.log('im render eatgram upload',upload);
             return (<li key={key}><EatGram {...upload} /></li>);
         }
             );

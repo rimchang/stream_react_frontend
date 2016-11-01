@@ -13,7 +13,6 @@ export default class EatGram extends Component {
     
     render () {
         const username=_.get(this.props,'user_id.userprofile.name');
-        console.log('username',username);
         return (
             
              <div className='eatgram-photo'>
