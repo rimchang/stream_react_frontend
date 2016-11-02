@@ -3,7 +3,7 @@ import { AUTH_LOGIN, FETCH_TOKEN, FETCH_USER } from '../actions/types';
 
 
 export default function (state={} , action) {
-    console.log('im authlogin redux action.payload',action.payload);
+    //console.log('im authlogin redux action.payload',action.payload);
     switch (action.type) {
         case FETCH_TOKEN:
             // code

@@ -3,7 +3,7 @@ import { FETCH_UPLOADS } from '../actions/types';
 
 export default function (state = {},action) {
     
-    console.log('im upload list reducer action.paylod.data',action.payload);
+    //console.log('im upload list reducer action.paylod.data',action.payload);
     
     switch (action.type) {
         case FETCH_UPLOADS:

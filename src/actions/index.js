@@ -8,7 +8,7 @@ const CLIENT_SECRET = 'TaxmQUbjTDL6mzO6qCxctBe7944jS8FbvDL8jDfUyt7jkJgto8VcuUrQh
 
 export function fetchUploads () {
     const request = axios.get(`${ROOT_URL}api/uploads/`);
-    console.log('hi im fetchupload in  request : ',request);
+    //console.log('hi im fetchupload in  request : ',request);
     return ({
         type: FETCH_UPLOADS,
         payload: request
