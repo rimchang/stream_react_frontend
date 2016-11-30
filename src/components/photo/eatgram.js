@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import _ from 'lodash';
 import Moment from 'moment';
-import { Image, Media } from 'react-bootstrap';
+import { Card, Icon, Image, List, Comment } from 'semantic-ui-react'
 
 
 export default class EatGram extends Component {
@@ -17,23 +17,52 @@ export default class EatGram extends Component {
             
              <div className='eatgram-photo'>
 
-                    <Image className='image' src={this.props.image_file}  rounded width={310} />
+                <Card>
+                    <Image src={this.props.image_file} />
+                    <Card.Content>
+                      <Card.Header>
+                        <Image src={_.get(this.props,'user_id.userprofile.profile_photo')} size="big" avatar bordered />
+                        <span>{_.get(this.props,'user_id.userprofile.name')}</span>
+                      </Card.Header>
+                      <Card.Meta>
+                     <List horizontal floated='right'>
+ 						<List.Item>
+ 						<span className="glyphicon glyphicon-time"></span>{ this.getRelativeTime(this.props.created_at) }
+ 						</List.Item>
+ 						<List.Item>
+ 						<span className="glyphicon glyphicon-heart"></span> likes
+ 						</List.Item>
+ 						<List.Item>
+ 						<span className="glyphicon glyphicon-map-marker"></span> dsad
+ 						</List.Item>
+                     </List>
+                      </Card.Meta>
+                      <Card.Description>
+                        <p>{this.props.caption}</p>
+                      </Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+  <Comment.Group>
+    <Comment>
+      <Comment.Avatar as='a' src='http://semantic-ui.com/images/avatar/small/stevie.jpg' />
+      <Comment.Content>
+        <Comment.Author>Stevie Feliciano</Comment.Author>
+        <Comment.Metadata>
+          <div>2 days ago</div>
+          <div>
+            <Icon name='star' />
+            5 Faves
+          </div>
+        </Comment.Metadata>
+        <Comment.Text>
+          Hey guys, I hope this example comment is helping you read this documentation.
+        </Comment.Text>
+      </Comment.Content>
+    </Comment>
+  </Comment.Group>
+                    </Card.Content>
+                  </Card>
 
-             <Media bsClass='user-profile'>
-                 <Media.Left>
-                     <Image bsClass='media-object' src={_.get(this.props,'user_id.userprofile.profile_photo')} width={50} height={40} />
-                 </Media.Left>
-                 <Media.Body>
-                     <Media.Heading><strong>{_.get(this.props,'user_id.userprofile.name')}</strong></Media.Heading>
-                     <p>{this.props.caption}</p>
-                     <ul className="photo-meta list-inline">
- 						<li><span className="glyphicon glyphicon-time"></span>{ this.getRelativeTime(this.props.created_at) }</li>
- 						<li><span className="glyphicon glyphicon-heart"></span> likes</li>
- 						<li><span className="glyphicon glyphicon-map-marker"></span> dsad</li>
-                     </ul>
-                 </Media.Body>
-             </Media>
-             //comment
              </div>
             
             );

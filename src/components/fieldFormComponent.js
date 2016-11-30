@@ -62,7 +62,7 @@ export class LocationFieldFormControl extends Component {
     return (
       <FormGroup controlId={input.name} validationState={meta.error ? 'error' : 'success'}>
         <InputGroup>
-          <ControlLabel></ControlLabel>
+          <ControlLabel>{this.props.children}</ControlLabel>
           <FormControl 
             type={type} 
             placeholder={placeholder} 
@@ -72,7 +72,7 @@ export class LocationFieldFormControl extends Component {
           />
           
           <InputGroup.Button>
-            <PopoverMap />
+            <PopoverMap term={input.value} />
           </InputGroup.Button>
         </InputGroup>
       </FormGroup>

@@ -29,7 +29,9 @@ class NewPost extends Component {
   locationChange(e) {
     console.log("hi im locationchange callback",e.target.value);
     this.setState({term : e.target.value});
+    
   }
+  
   
   onSubmit (props) {
     console.log("i'm on submit",props);
@@ -58,8 +60,8 @@ class NewPost extends Component {
           placeholder="please input location" 
           value={this.state.term} 
           component={LocationFieldFormControl} 
-          onChange={this.locationChange} 
-          onClickButton={this.onClickButton}
+          onChangeAction={this.locationChange} 
+
           />
         
         <Field 
@@ -76,6 +78,7 @@ class NewPost extends Component {
       );
   }
 }
+
 
 export default reduxForm({
   form: 'newpost'

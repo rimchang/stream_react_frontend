@@ -1,57 +1,33 @@
-import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import { Row, Col, Button, Input, } from 'react-bootstrap';
-import _ from 'lodash';
-import {
-  DaumMapView,
-  DaumMapOverlayOnMap, DaumMapOverlayOnScreen,
-  DAUM_BASE_MAP_TYPES,
-  DAUM_OVERLAY_MAP_TYPES,
-} from 'react-daum-map';
+import { Row, Col, Button, Input, Image} from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-const APIKEY = 'c3cf4c5ef5fd13dcbd3e67a3b31fb843';
 
-export default class DaumRoadViewDemo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      position: [37.566826, 126.9786567],
-      reportedPosition: [null, null],
-      note1Position: [37.566826, 126.97865],
-      zoomLevel: 3,
-      baseMapType: DAUM_BASE_MAP_TYPES.ROADMAP,
-      children: [],
+import { fetchMapUrl } from '../actions/index';
+
+class DaumMap extends Component {
+    
+    constructor (props) {
+        super(props);
+        
+        this.state = { term : "" };
     }
-  }
-  handleAddChild = () => {
-    const children = _.concat(this.state.children, [<h1> Some Child! </h1>]);
-    this.setState({ children });
-  }
-  handleMove = (reportedPosition) => {
-    this.setState({ reportedPosition });
-  }
-  handleZoomChange = (zoomLevel) => {
-    this.setState({ zoomLevel });
-  }
-  handleSetBaseMapType = (event) => {
-    const baseMapType = event.target.value;
-    this.setState({ baseMapType });
-  }
-  handleZoomOut = () => {
-    const zoomLevel = this.state.zoomLevel + 1;
-    this.setState({ zoomLevel });
-  }
-  handleMovePositionUp = () => {
-    const position = _.clone(this.state.position);
-    position[0] = position[0] + 0.001;
-    this.setState({ position });
-  }
-  render() {
-    return (
-      <div>
-        <h1>hi</h1>
-      </div>
-    );
-  }
+    
+    componentWillMount () {
+        this.props.fetchMapUrl(this.props.term);
+    }
+    
+    render() {
+
+        return (
+            <div>
+                <Image src="http://map2.daum.net/map/imageservice?IW=550&IH=350&MX=493508&MY=1126575&CX=493508&CY=1126575&SCALE=2.5&service=open#.png "  width={600} height={450} thumbnail />
+            </div>
+            );
+    }
+
 }
 
+
+
+export default connect(null,{ fetchMapUrl })(DaumMap);

@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import {Popover, ButtonToolbar, Button, Overlay, Glyphicon} from 'react-bootstrap';
 
-import DaumRoadViewDemo from './daummap'
+import DaumMap from './daummap'
 
 export default class PopoverMap extends Component {
     
@@ -29,9 +29,9 @@ export default class PopoverMap extends Component {
           container={this}
           containerPadding={20}
         >
-          <Popover id="popover-contained" title="Popover bottom" >
+          <Popover id="popover-contained" title="Popover botton" >
             <strong>Holy guacamole!</strong> Check this info.
-            <DaumRoadViewDemo />
+            <DaumMap term={this.props.term} />
           </Popover>
         </Overlay>
       </ButtonToolbar>

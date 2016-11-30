@@ -1,6 +1,8 @@
 import axios from 'axios';
+import daum from 'daum-map-api';
 
-import { FETCH_UPLOADS, AUTH_LOGIN, FETCH_TOKEN, FETCH_USER } from './types';
+
+import { FETCH_UPLOADS, AUTH_LOGIN, FETCH_TOKEN, FETCH_USER, FETCH_MAPURL } from './types';
 
 const ROOT_URL = '//stream-react-backend-2-rimchang.c9users.io/';
 const CLIENT_ID = 'l9v9gIP17hhcKViF83WGVwcOT16Xh2llngpFdAai';
@@ -37,4 +39,14 @@ export function authLogin (response) {
         });
         
     };
+}
+
+export function fetchMapUrl (term) {
+    daum.mapImage('서울역', function(res) {
+  console.log(res);
+});
+    return ({
+        type : FETCH_MAPURL,
+        paylaod: term
+    });
 }

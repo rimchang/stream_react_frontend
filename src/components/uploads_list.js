@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { fetchUploads } from '../actions/index';
+import { Card } from 'semantic-ui-react'
 
 import EatGram from './photo/eatgram';
 
@@ -27,9 +28,9 @@ class UploadsList extends Component {
         return (
             <div>
                 hi i'm uploadslist
-                <ul className='list-inline'>
+                <Card.Group >
                 {this.renderEatgrams()}
-                </ul>
+                </Card.Group >
             </div>
             );
     }
